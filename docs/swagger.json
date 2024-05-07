@@ -1,0 +1,293 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Contact API",
+      "description": "API documentation for contact CRUD operations",
+      "version": "1.0.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "schemes": ["http", "https"],
+    "paths": {
+      "/api/contact/create": {
+        "post": {
+          "summary": "Create a new contact",
+          "description": "Create a new contact",
+          "tags": ["Contacts"],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "schema": {
+                "$ref": "#/definitions1/Contact"
+              },
+              "required": true,
+              "description": "Contact object"
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Contact created"
+            }
+          }
+        }
+      },
+      "/api/contact/update/{id}": {
+        "put": {
+          "summary": "Update a contact by ID",
+          "description": "Update a contact by ID",
+          "tags": ["Contacts"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the contact to update",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "schema": {
+                "$ref": "#/definitions1/Contact"
+              },
+              "required": true,
+              "description": "Updated contact object"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Contact updated"
+            },
+            "404": {
+              "description": "Contact not found"
+            }
+          }
+        }},
+
+        "/api/v1/user/update/{id}": {
+          "put": {
+            "summary": "Update a user by ID",
+            "description": "Update a user by ID",
+            "tags": ["user"],
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "description": "ID of the user to update",
+                "required": true,
+                "type": "string"
+              },
+              {
+                "in": "body",
+                "name": "body",
+                "schema": {
+                  "$ref": "#/definitions2/user"
+                },
+                "required": true,
+                "description": "Updated user object"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "user updated"
+              },
+              "404": {
+                "description": "user not found"
+              }
+            }
+          }},
+        "/api/contact/delete/{id}":{
+        "delete": {
+          "summary": "Delete a contact by ID",
+          "description": "Delete a contact by ID",
+          "tags": ["Contacts"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the contact to delete",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Contact deleted"
+            },
+            "404": {
+              "description": "Contact not found"
+            }
+          }
+        }},
+
+        "/api/v1/user/delete/{id}":{
+          "delete": {
+            "summary": "Delete a user by ID",
+            "description": "Delete a user by ID",
+            "tags": ["user"],
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "description": "ID of the user to delete",
+                "required": true,
+                "type": "string"
+              }
+            ],
+            "responses": {
+              "204": {
+                "description": "user deleted"
+              },
+              "404": {
+                "description": "user not found"
+              }
+            }
+          }},
+        "/api/v1/user/create": {
+          "post": {
+            "summary": "Create a new user",
+            "description": "Create a new user",
+            "tags": ["user"],
+            "parameters": [
+              {
+                "in": "body",
+                "name": "body",
+                "schema": {
+                  "$ref": "#/definitions2/user"
+                },
+                "required": true,
+                "description": "user object"
+              }
+            ],
+            "responses": {
+              "201": {
+                "description": "user created"
+              }
+            }
+          }
+        },
+        "/api/contact/{id}":{
+        "get": {
+          "summary": "Get a contact by ID",
+          "description": "Get a contact by ID",
+          "tags": ["Contacts"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the contact to retrieve",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response"
+            },
+            "404": {
+              "description": "Contact not found"
+            }
+          }
+        }},
+
+        "/api/v1/user/list/{id}":{
+          "get": {
+            "summary": "Get a user by ID",
+            "description": "Get a user by ID",
+            "tags": ["user"],
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "description": "ID of the user to retrieve",
+                "required": true,
+                "type": "string"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              },
+              "404": {
+                "description": "Contact not found"
+              }
+            }
+          }},
+
+        
+        "/api/contact/list":{
+            "get": {
+              "summary": "Get all contacts ",
+              "description": "Get all contacts",
+              "tags": ["Contacts"],
+              "responses": {
+                "200": {
+                  "description": "Successful response"
+                },
+                "404": {
+                  "description": "Contact not found"
+                }
+              }
+            }
+      
+    }},
+    
+
+    
+    "definitions1": {
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "Subject": {
+            "type": "string"
+          },
+           "Message": {
+            "type": "string"
+          }
+          }
+          
+        },
+        "required": ["Name", "email","Subject","Message"]
+      },
+      "definitions2": {
+        "user": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+             "password": {
+              "type": "string"
+            }
+            }
+            
+          },
+          "required": ["firstName", "lastName","email","password"]
+        }
+
+    }
+  
+
+
+
+
+
+
+
+
+
+
+
